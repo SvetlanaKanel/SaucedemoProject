@@ -4,6 +4,8 @@ class StartPage {
     getUsernameInputField = () => cy.get('#user-name');
     getPasswordInputField = () => cy.get('#password');
     getLoginBtn = () => cy.get('#login-button');
+    getUsernamesListHeader = () => cy.get('#login_credentials h4');
+    getPasswordHeader = () => cy.get('.login_password h4');
 
 
     //methods
