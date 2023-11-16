@@ -1,0 +1,22 @@
+{
+  "name": "saucedemoproject",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SvetlanaKanel/SaucedemoProject.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SvetlanaKanel/SaucedemoProject/issues"
+  },
+  "homepage": "https://github.com/SvetlanaKanel/SaucedemoProject#readme",
+  "devDependencies": {
+    "cypress": "^12.11.0"
+  }
+}
