@@ -2,6 +2,9 @@
   "mainHeader" : "Swag Labs",
   "userNameInputFieldPlaceholder" : "Username",
   "passwordInputFieldPlaceholder" : "Password",
+  "textBtn" : "Login",
+  "backgroundColorBtn" : "rgb(61, 220, 145)",
+  "colorBtn" : "rgb(19, 35, 34)",
   "userNames": [
     "standard_user",
     "locked_out_user",
