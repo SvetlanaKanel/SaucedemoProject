@@ -35,11 +35,11 @@ jobs:
       with:
         paths: reports/*.xml
 
-    - name: Publish test results
-      uses: EnricoMi/publish-unit-test-result-action@v1
-      if: always()
-      with:
-        files: "reports/*.xml"
+    #- name: Publish test results
+    #  uses: EnricoMi/publish-unit-test-result-action@v1
+    #  if: always()
+    #  with:
+    #    files: "reports/*.xml"
 
     - name: Artifacts
       uses: actions/upload-artifact@v2
