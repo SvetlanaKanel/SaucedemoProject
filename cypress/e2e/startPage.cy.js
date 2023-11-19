@@ -10,7 +10,7 @@ describe('Start page with login', () => {
         cy.visit('https://www.saucedemo.com/');
     })
 
-    it('AT_01.01.01 | Verify that start page has header "Swag Labs', () => {
+    it('AT_01.01.01 | Verify that start page has header "Swag Labs"', () => {
 
         startPage.getMainHeader()
             .should('be.visible')
@@ -60,6 +60,13 @@ describe('Start page with login', () => {
                expect($name).equal(startData.userNames[idx]);
             })               
        })
+    })
+
+    it('AT_01.01.09 | Verify that the password is "secret_sauce"', () => {
+        startPage.getPassword().then($el => {
+
+            expect($el).equal(startData.password);
+        })
     })
     
 

@@ -7,6 +7,7 @@ class StartPage {
     getUsernamesListHeader = () => cy.get('#login_credentials h4');
     getPasswordHeader = () => cy.get('.login_password h4');
     getUsernamesListString = () => cy.get('#login_credentials')
+    getPasswordString = () => cy.get('.login_password');
 
 
     //methods
@@ -18,6 +19,14 @@ class StartPage {
             newUsernamesArray.pop();
 
             return newUsernamesArray[idx];
+        })
+    }
+
+    getPassword() {
+        return this.getPasswordString().then($str => {
+            let passwordArray = $str.text().split(':');
+            let password = passwordArray[1];
+            return password;
         })
     }
 }
