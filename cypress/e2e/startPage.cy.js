@@ -53,4 +53,14 @@ describe('Start page with login', () => {
             .and('have.text', startData.passwordHeader)
     })
 
+    startData.userNames.forEach((el, idx) => {
+        it(`AT_01.01.08 | Verify that the ${el} from list of the users matches ${el}`, () => {     
+            startPage.getUsernamesArray(idx).then($name => {
+   
+               expect($name).equal(startData.userNames[idx]);
+            })               
+       })
+    })
+    
+
 });
