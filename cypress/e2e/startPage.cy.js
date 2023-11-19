@@ -1,9 +1,12 @@
-/// <reference types = "Cypress">
+/// <reference types = "Cypress"/>
 
 import StartPage from "../pageObgect/StartPage";
 import startData from "../fixtures/startData.json";
+import ProductPage from "../pageObgect/ProductPage";
+import productData from "../fixtures/productData.json";
 
 const startPage = new StartPage();
+const productPage = new ProductPage();
 
 describe('Start page with login', () => {
     beforeEach(() => {
@@ -27,18 +30,18 @@ describe('Start page with login', () => {
         startPage.getPasswordInputField()
             .should('be.visible')
             .and('have.attr', 'placeholder', startData.passwordInputFieldPlaceholder);
-    })   
-    
+    })
+
     it('AT_01.01.04 | Verify that login button is visible and has text "Login"', () => {
         startPage.getLoginBtn()
-        .should('be.visible')
-        .and('have.value', startData.textBtn)
+            .should('be.visible')
+            .and('have.value', startData.textBtn)
     })
 
     it('AT_01.01.05 | Verify that login button color is rgb(19, 35, 34) and background-color is rgb(61, 220, 145)', () => {
         startPage.getLoginBtn()
-        .should('have.css', 'color', startData.colorBtn)
-        .and('have.css', 'background-color', startData.backgroundColorBtn)
+            .should('have.css', 'color', startData.colorBtn)
+            .and('have.css', 'background-color', startData.backgroundColorBtn)
     })
 
     it('AT_01.01.06 | Verify that usernames header is visible and has text "Accepted usernames are:"', () => {
@@ -54,12 +57,12 @@ describe('Start page with login', () => {
     })
 
     startData.userNames.forEach((el, idx) => {
-        it(`AT_01.01.08 | Verify that the ${el} from list of the users matches ${el}`, () => {     
+        it(`AT_01.01.08 | Verify that the ${el} from list of the users matches ${el}`, () => {
             startPage.getUsernamesArray(idx).then($name => {
-   
-               expect($name).equal(startData.userNames[idx]);
-            })               
-       })
+
+                expect($name).equal(startData.userNames[idx]);
+            })
+        })
     })
 
     it('AT_01.01.09 | Verify that the password is "secret_sauce"', () => {
@@ -68,6 +71,33 @@ describe('Start page with login', () => {
             expect($el).equal(startData.password);
         })
     })
-    
+})
 
-});
+describe('Start page (login) Positive Functional and E2E tests', () => {
+    beforeEach(() => {
+        cy.visit('https://www.saucedemo.com/');
+    })
+
+    it('AT_01.02.01 | Type the name into the username input field and verify this field will get a value equalled the name', () => {
+        startPage.getUsernameInputField().should('have.attr', 'value', "");        
+        startPage.getUsernameInputField().type(startData.userNames[0]);
+
+        startPage.getUsernameInputField().should('have.attr', 'value', startData.userNames[0] )
+    })
+
+    it('AT_01.02.02 | Type the password into the password input field and verify this field will get a value equaled the password', () => {
+        startPage.getPasswordInputField().should('have.attr', 'value', "");
+        startPage.getPasswordInputField().type(startData.password);
+
+        startPage.getPasswordInputField().should('have.attr', 'value', startData.password)
+    })
+
+    it('AT_01.02.03 | login standard user and verify that the site is opened on the product page', () => {
+        startPage.getUsernameInputField().type(startData.userNames[0]);
+        startPage.getPasswordInputField().type(startData.password);
+        startPage.clickLoginBtn();
+
+        productPage.getMainHeader().should('have.text', productData.mainHeader);
+    })
+
+})
