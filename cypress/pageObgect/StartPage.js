@@ -29,5 +29,9 @@ class StartPage {
             return password;
         })
     }
+
+    clickLoginBtn() {
+        this.getLoginBtn().click();
+    }
 }
 export default StartPage
