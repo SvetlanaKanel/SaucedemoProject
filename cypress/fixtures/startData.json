@@ -15,5 +15,6 @@
   ],
   "password": "secret_sauce",
   "namesHeader": "Accepted usernames are:",
-  "passwordHeader": "Password for all users:"
+  "passwordHeader": "Password for all users:",
+  "lockesOutErrorMessage" : "Epic sadface: Sorry, this user has been locked out."
 }

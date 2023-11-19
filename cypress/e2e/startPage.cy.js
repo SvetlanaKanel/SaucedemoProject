@@ -100,4 +100,12 @@ describe('Start page (login) Positive Functional and E2E tests', () => {
         productPage.getMainHeader().should('have.text', productData.mainHeader);
     })
 
+    it('AT_01.02.04 | login locked out user and verify error message', () => {
+        startPage.getUsernameInputField().type(startData.userNames[1]);
+        startPage.getPasswordInputField().type(startData.password);
+        startPage.clickLoginBtn();
+
+        startPage.getLockedOutErrorMessage().should('have.text', startData.lockesOutErrorMessage)
+    })
+
 })
