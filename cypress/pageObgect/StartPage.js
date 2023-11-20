@@ -8,7 +8,7 @@ class StartPage {
     getPasswordHeader = () => cy.get('.login_password h4');
     getUsernamesListString = () => cy.get('#login_credentials')
     getPasswordString = () => cy.get('.login_password');
-    getLockedOutErrorMessage = () => cy.get('h3');
+    getErrorMessage = () => cy.get('h3');
 
 
     //methods
