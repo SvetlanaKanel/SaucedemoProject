@@ -9,6 +9,7 @@ class StartPage {
     getUsernamesListString = () => cy.get('#login_credentials')
     getPasswordString = () => cy.get('.login_password');
     getErrorMessage = () => cy.get('h3');
+    getCrossOnErrorMessage = () => cy.get('.error-button svg');
 
 
     //methods
@@ -33,6 +34,16 @@ class StartPage {
 
     clickLoginBtn() {
         this.getLoginBtn().click();
+        return this;
+    }
+
+    typeUsername(name) {
+        this.getUsernameInputField().type(name);
+        return this;
+    }
+
+    clickCrossOnErrorMessage() {
+        this.getCrossOnErrorMessage().click();
         return this;
     }
 }
