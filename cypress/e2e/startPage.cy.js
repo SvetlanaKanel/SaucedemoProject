@@ -8,7 +8,7 @@ import productData from "../fixtures/productData.json";
 const startPage = new StartPage();
 const productPage = new ProductPage();
 
-describe('Start page with login', () => {
+describe('Start page login UI', () => {
     beforeEach(() => {
         cy.visit('https://www.saucedemo.com/');
     })
@@ -79,10 +79,10 @@ describe('Start page (login) Positive Functional and E2E tests', () => {
     })
 
     it('AT_01.02.01 | Type the name into the username input field and verify this field will get a value equalled the name', () => {
-        startPage.getUsernameInputField().should('have.attr', 'value', "");        
+        startPage.getUsernameInputField().should('have.attr', 'value', "");
         startPage.getUsernameInputField().type(startData.userNames[0]);
 
-        startPage.getUsernameInputField().should('have.attr', 'value', startData.userNames[0] )
+        startPage.getUsernameInputField().should('have.attr', 'value', startData.userNames[0])
     })
 
     it('AT_01.02.02 | Type the password into the password input field and verify this field will get a value equaled the password', () => {
@@ -107,18 +107,29 @@ describe('Start page (login) Positive Functional and E2E tests', () => {
 
         startPage.getErrorMessage().should('have.text', startData.lockesOutErrorMessage);
     })
+})
 
-    describe('Start page (login) - Negative scenarios', () => {
-        beforeEach(() => {
-            cy.visit('https://www.saucedemo.com/');
-        })
-
-        it('AT_01.03.01 | Verify that the User cannot login without password', () => {
-            startPage.getUsernameInputField().type(startData.userNames[0]);
-            startPage.clickLoginBtn();
-
-            startPage.getErrorMessage().should('have.text', startData.loginWithoutPasswordErrorMessage)
-        });
+describe('Start page (login) - Negative scenarios', () => {
+    beforeEach(() => {
+        cy.visit('https://www.saucedemo.com/');
     })
 
+    it('AT_01.03.01 | Verify that the User cannot login without password', () => {
+        startPage
+            .typeUsername(startData.userNames[0])
+            .clickLoginBtn();
+
+        startPage.getErrorMessage().should('have.text', startData.loginWithoutPasswordErrorMessage)
+    });
+
+    it('AT_01.03.02 | Login without password and verify that the user can close error massage', () => {
+        startPage
+            .typeUsername(startData.userNames[0])
+            .clickLoginBtn()
+            .getErrorMessage().should('be.visible');
+
+        startPage
+            .clickCrossOnErrorMessage()
+            .getErrorMessage().should('not.exist');
+    })
 })
