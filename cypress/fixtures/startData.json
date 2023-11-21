@@ -17,5 +17,6 @@
   "namesHeader": "Accepted usernames are:",
   "passwordHeader": "Password for all users:",
   "lockesOutErrorMessage" : "Epic sadface: Sorry, this user has been locked out.",
-  "loginWithoutPasswordErrorMessage" : "Epic sadface: Password is required"
+  "loginWithoutPasswordErrorMessage" : "Epic sadface: Password is required",
+  "loginWithoutUsernameErrorMessage" : "Epic sadface: Username is required"
 }
