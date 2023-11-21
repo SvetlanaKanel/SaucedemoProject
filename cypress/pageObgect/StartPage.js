@@ -37,13 +37,18 @@ class StartPage {
         return this;
     }
 
-    typeUsername(name) {
+    typeUsernameToInputField(name) {
         this.getUsernameInputField().type(name);
         return this;
     }
 
     clickCrossOnErrorMessage() {
         this.getCrossOnErrorMessage().click();
+        return this;
+    }
+
+    typePassordToInputField(word) {
+        this.getPasswordInputField().type(word)
         return this;
     }
 }

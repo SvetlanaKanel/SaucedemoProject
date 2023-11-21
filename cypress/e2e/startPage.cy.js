@@ -116,7 +116,7 @@ describe('Start page (login) - Negative scenarios', () => {
 
     it('AT_01.03.01 | Verify that the User cannot login without password', () => {
         startPage
-            .typeUsername(startData.userNames[0])
+            .typeUsernameToInputField(startData.userNames[0])
             .clickLoginBtn();
 
         startPage.getErrorMessage().should('have.text', startData.loginWithoutPasswordErrorMessage)
@@ -124,12 +124,31 @@ describe('Start page (login) - Negative scenarios', () => {
 
     it('AT_01.03.02 | Login without password and verify that the user can close error massage', () => {
         startPage
-            .typeUsername(startData.userNames[0])
+            .typeUsernameToInputField(startData.userNames[0])
             .clickLoginBtn()
             .getErrorMessage().should('be.visible');
 
         startPage
             .clickCrossOnErrorMessage()
+            .getErrorMessage().should('not.exist');
+    })
+
+    it('AT_01.03.03 | Verify that the user cannot Login without username', () => {
+        startPage
+            .typePassordToInputField(startData.password)
+            .clickLoginBtn()
+
+            .getErrorMessage().should('have.text', startData.loginWithoutUsernameErrorMessage);
+    })
+
+    it('AT_01.03.04 | login without username and verify that the user can close error massage', () => {
+        startPage
+            .typePassordToInputField(startData.password)
+            .clickLoginBtn()
+            .getErrorMessage().should('be.visible');
+        startPage
+            .clickCrossOnErrorMessage()
+
             .getErrorMessage().should('not.exist');
     })
 })
