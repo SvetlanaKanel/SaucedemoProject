@@ -105,7 +105,20 @@ describe('Start page (login) Positive Functional and E2E tests', () => {
         startPage.getPasswordInputField().type(startData.password);
         startPage.clickLoginBtn();
 
-        startPage.getLockedOutErrorMessage().should('have.text', startData.lockesOutErrorMessage)
+        startPage.getErrorMessage().should('have.text', startData.lockesOutErrorMessage);
+    })
+
+    describe('Start page (login) - Negative scenarios', () => {
+        beforeEach(() => {
+            cy.visit('https://www.saucedemo.com/');
+        })
+
+        it('AT_01.03.01 | Verify that the User cannot login without password', () => {
+            startPage.getUsernameInputField().type(startData.userNames[0]);
+            startPage.clickLoginBtn();
+
+            startPage.getErrorMessage().should('have.text', startData.loginWithoutPasswordErrorMessage)
+        });
     })
 
 })
