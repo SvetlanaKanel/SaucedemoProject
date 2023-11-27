@@ -92,7 +92,7 @@ describe('Start page (login) Positive Functional and E2E tests', () => {
         startPage.getPasswordInputField().should('have.attr', 'value', startData.password)
     })
 
-    it('AT_01.02.03 | login standard user and verify that the site is opened on the product page', () => {
+    it('AT_01.02.03 | login "standard user" and verify that the site is opened on the product page', () => {
         startPage.getUsernameInputField().type(startData.userNames[0]);
         startPage.getPasswordInputField().type(startData.password);
         startPage.clickLoginBtn();
@@ -100,12 +100,37 @@ describe('Start page (login) Positive Functional and E2E tests', () => {
         productPage.getMainHeader().should('have.text', productData.mainHeader);
     })
 
-    it('AT_01.02.04 | login locked out user and verify error message', () => {
+    it('AT_01.02.04 | login "locked out" user and verify error message', () => {
         startPage.getUsernameInputField().type(startData.userNames[1]);
         startPage.getPasswordInputField().type(startData.password);
         startPage.clickLoginBtn();
 
         startPage.getErrorMessage().should('have.text', startData.lockesOutErrorMessage);
+    })
+
+    it('AT_01.02.05 | login "locked out" user and verify that the user can close error massage', () => {
+        startPage
+            .typeUsernameToInputField(startData.userNames[1])
+            .typePassordToInputField(startData.password)
+            .clickLoginBtn()
+            .getErrorMessage().should('be.visible');
+
+        startPage
+            .clickCrossOnErrorMessage()
+            .getErrorMessage().should('not.exist');
+    })
+
+    it('AT_01.02.06 | login "problem user" user and verify user get Product page but each product has the same picture', () => {
+        startPage
+            .typeUsernameToInputField(startData.userNames[2])
+            .typePassordToInputField(startData.password)
+            .clickLoginBtn();
+
+        productPage.getMainHeader().should('have.text', productData.mainHeader);
+
+        productPage.getAllItemsPictures().each($el => {
+            cy.wrap($el).should('have.attr', 'src', productData.problemUserPicture);
+        })
     })
 })
 
