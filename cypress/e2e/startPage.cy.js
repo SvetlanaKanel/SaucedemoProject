@@ -97,6 +97,7 @@ describe('Start page (login) Positive Functional and E2E tests', () => {
         startPage.getPasswordInputField().type(startData.password);
         startPage.clickLoginBtn();
 
+        cy.url().should('be.eq', productData.url)
         productPage.getMainHeader().should('have.text', productData.mainHeader);
     })
 
@@ -131,6 +132,36 @@ describe('Start page (login) Positive Functional and E2E tests', () => {
         productPage.getAllItemsPictures().each($el => {
             cy.wrap($el).should('have.attr', 'src', productData.problemUserPicture);
         })
+    })
+
+    it('AT_01.02.07 | login "performance_glitch_user" user and verify user transferred to Product page', () => {
+        startPage
+            .typeUsernameToInputField(startData.userNames[3])
+            .typePassordToInputField(startData.password)
+            .clickLoginBtn();
+
+        cy.url().should('be.eq', productData.url)    
+        productPage.getMainHeader().should('have.text', productData.mainHeader);
+    })
+
+    it('AT_01.02.08 | login "error_user" user and verify user transferred to Product page', () => {
+        startPage
+            .typeUsernameToInputField(startData.userNames[4])
+            .typePassordToInputField(startData.password)
+            .clickLoginBtn();
+
+        cy.url().should('be.eq', productData.url)    
+        productPage.getMainHeader().should('have.text', productData.mainHeader);
+    })
+
+    it('AT_01.02.09 | login "visual_user" user and verify user transferred to Product page', () => {
+        startPage
+            .typeUsernameToInputField(startData.userNames[5])
+            .typePassordToInputField(startData.password)
+            .clickLoginBtn();
+
+        cy.url().should('be.eq', productData.url)    
+        productPage.getMainHeader().should('have.text', productData.mainHeader);
     })
 })
 
