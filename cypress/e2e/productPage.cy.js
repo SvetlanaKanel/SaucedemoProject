@@ -12,7 +12,8 @@ describe('Product page UI', () => {
 
     beforeEach(() => {
         cy.visit('https://www.saucedemo.com/');
-        startPage.typeUsernameToInputField(startData.userNames[0])
+        startPage
+            .typeUsernameToInputField(startData.userNames[0])
             .typePassordToInputField(startData.password)
             .clickLoginBtn();
     })
@@ -26,6 +27,14 @@ describe('Product page UI', () => {
             .getBurgerMenu().should('be.visible')
             .and('have.attr', "srcset", productData.burgerPicture_srcset);
     })
+
+    it('AT_02.01.03 | Click on burger menu and verify all links are visible and have right name', () => {
+        productPage
+            .clickBurgerMenu()
+            .getBurgerMenuList().each(($el, idx) => {
+                cy.wrap($el).should('have.text', productData.burgerMenuList[idx])
+            })
+    });
 
 
 });
