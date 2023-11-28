@@ -35,7 +35,7 @@ describe('Start page login UI', () => {
     it('AT_01.01.04 | Verify that login button is visible and has text "Login"', () => {
         startPage.getLoginBtn()
             .should('be.visible')
-            .and('have.value', startData.textBtn)
+            .and('have.value', startData.textBtn);
     })
 
     it('AT_01.01.05 | Verify that login button color is rgb(19, 35, 34) and background-color is rgb(61, 220, 145)', () => {
