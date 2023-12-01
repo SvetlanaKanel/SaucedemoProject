@@ -25,17 +25,19 @@ describe('Product page UI', () => {
         productPage.getLogo().should('have.text', productData.logo);
     })
 
-    it('AT_02.01.02 | Verify burger menu is visible and has required image', () => {
+    it('AT_02.01.02 | Verify humburger menu logo is visible and has required image', () => {
         productPage
-            .getBurgerMenu().should('be.visible')
+            .getBurgerMenuLogo().should('be.visible')
             .and('have.attr', "srcset", productData.burgerPicture_srcset);
     })
 
-    it('AT_02.01.03 | Click on burger menu and verify all links are visible and have right name', () => {
+    it('AT_02.01.03 | Click on humburger menu and verify all links are visible and have right name', () => {
         productPage
             .clickBurgerMenu()
             .getSidebarList().each(($el, idx) => {
-                cy.wrap($el).should('have.text', productData.burgerMenuList[idx])
+                cy.wrap($el)
+                    .should('be.visible')
+                    .and('have.text', productData.burgerMenuList[idx])
             })
     });
 
@@ -58,6 +60,19 @@ describe('Product page UI', () => {
             .getLoginBtn()
             .should('be.visible')
             .and('have.value', startData.textBtn);
+    })
+
+    it('Close sidebar and verify that the user can see the burger menu ikon', () => {
+        productPage
+            .clickBurgerMenu()
+            .getSidebarMenu().should('be.visible')
+            .and('have.attr', 'aria-hidden', 'false')
+
+        productPage.clickSidebarCrossBtn()
+            .getSidebarMenu().should('not.be.visible')
+            .and('have.attr', 'aria-hidden', 'true')
+        productPage.getBurgerMenu()
+            .should('be.visible')
     })
 
 });
