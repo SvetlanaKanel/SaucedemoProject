@@ -57,8 +57,8 @@ describe('Start page login UI', () => {
     })
 
     it(`AT_01.01.08 | Verify that the list of user names matches data`, () => {
-        startPage.getUsernamesArray().each(($name, idx) => {            
-            cy.wrap($name).should('be.eq', startData.userNames[idx] )            
+        startPage.getUsernamesArray().each(($name, idx) => {
+            cy.wrap($name).should('be.eq', startData.userNames[idx])
         })
     })
 
@@ -171,22 +171,14 @@ describe('Start page (login) - Negative scenarios', () => {
     it('AT_01.03.01 | Verify that the User cannot login without password', () => {
         startPage
             .typeUsernameToInputField(startData.userNames[0])
-            .clickLoginBtn();
-
-        startPage.getErrorMessage().should('have.text', startData.loginWithoutPasswordErrorMessage)
-    });
-
-    it('AT_01.03.02 | Login without password and verify that the user can close error massage', () => {
-        startPage
-            .typeUsernameToInputField(startData.userNames[0])
             .clickLoginBtn()
-            .getErrorMessage().should('be.visible');
+            .getErrorMessage().should('have.text', startData.loginWithoutPasswordErrorMessage)
 
         startPage
             .clickCrossOnErrorMessage()
             .getErrorMessage().should('not.exist');
-    })
-
+    });
+   
     it('AT_01.03.03 | Verify that the user cannot Login without username', () => {
         startPage
             .typePassordToInputField(startData.password)
