@@ -179,22 +179,17 @@ describe('Start page (login) - Negative scenarios', () => {
             .getErrorMessage().should('not.exist');
     });
    
-    it('AT_01.03.03 | Verify that the user cannot Login without username', () => {
+    it('AT_01.03.02 | Verify that the user cannot Login without username', () => {
         startPage
             .typePassordToInputField(startData.password)
             .clickLoginBtn()
 
-            .getErrorMessage().should('have.text', startData.loginWithoutUsernameErrorMessage);
-    })
+            .getErrorMessage().should('have.text', startData.loginWithoutUsernameErrorMessage)
 
-    it('AT_01.03.04 | login without username and verify that the user can close error massage', () => {
-        startPage
-            .typePassordToInputField(startData.password)
-            .clickLoginBtn()
-            .getErrorMessage().should('be.visible');
         startPage
             .clickCrossOnErrorMessage()
 
             .getErrorMessage().should('not.exist');
     })
+  
 })
