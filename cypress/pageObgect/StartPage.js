@@ -14,13 +14,13 @@ class StartPage {
 
     //methods
     //this method froms Array of usernames from usernames string and returns the name by the index
-    getUsernamesArray(idx) {
+    getUsernamesArray() {
         return this.getUsernamesListString().then($str => {
             let usernamesArray = $str.text().split(':');            
             let newUsernamesArray = usernamesArray[1].split('user').map(el => el + "user");
             newUsernamesArray.pop();
 
-            return newUsernamesArray[idx];
+            return newUsernamesArray;
         })
     }
 

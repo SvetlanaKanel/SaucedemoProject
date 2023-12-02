@@ -56,13 +56,9 @@ describe('Start page login UI', () => {
             .and('have.text', startData.passwordHeader)
     })
 
-// сделать each внутри
-    startData.userNames.forEach((el, idx) => {
-        it.only(`AT_01.01.08 | Verify that the ${el} from list of the users matches ${el}`, () => {
-            startPage.getUsernamesArray(idx).then($name => {
-
-                expect($name).equal(startData.userNames[idx]);
-            })
+    it(`AT_01.01.08 | Verify that the list of user names matches data`, () => {
+        startPage.getUsernamesArray().each(($name, idx) => {            
+            cy.wrap($name).should('be.eq', startData.userNames[idx] )            
         })
     })
 
@@ -142,7 +138,7 @@ describe('Start page (login) Positive Functional and E2E tests', () => {
             .typePassordToInputField(startData.password)
             .clickLoginBtn();
 
-        cy.url().should('be.eq', productData.url)    
+        cy.url().should('be.eq', productData.url)
         productPage.getMainHeader().should('have.text', productData.mainHeader);
     })
 
@@ -152,7 +148,7 @@ describe('Start page (login) Positive Functional and E2E tests', () => {
             .typePassordToInputField(startData.password)
             .clickLoginBtn();
 
-        cy.url().should('be.eq', productData.url)    
+        cy.url().should('be.eq', productData.url)
         productPage.getMainHeader().should('have.text', productData.mainHeader);
     })
 
@@ -162,7 +158,7 @@ describe('Start page (login) Positive Functional and E2E tests', () => {
             .typePassordToInputField(startData.password)
             .clickLoginBtn();
 
-        cy.url().should('be.eq', productData.url)    
+        cy.url().should('be.eq', productData.url)
         productPage.getMainHeader().should('have.text', productData.mainHeader);
     })
 })

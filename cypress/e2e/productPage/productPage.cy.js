@@ -1,11 +1,11 @@
 /// <reference types = "Cypress" />
 
-import StartPage from "../pageObgect/StartPage";
-import startData from "../fixtures/startData.json";
-import ProductPage from "../pageObgect/ProductPage";
-import productData from "../fixtures/productData.json";
-import SaucelabsPage from "../pageObgect/SaucelabsPage";
-import saucelabsData from "../fixtures/saucelabsData.json";
+import StartPage from "../../pageObgect/StartPage";
+import startData from "../../fixtures/startData.json";
+import ProductPage from "../../pageObgect/ProductPage";
+import productData from "../../fixtures/productData.json";
+import SaucelabsPage from "../../pageObgect/SaucelabsPage";
+import saucelabsData from "../../fixtures/saucelabsData.json";
 
 const startPage = new StartPage();
 const productPage = new ProductPage();
