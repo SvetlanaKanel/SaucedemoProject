@@ -191,5 +191,18 @@ describe('Start page (login) - Negative scenarios', () => {
 
             .getErrorMessage().should('not.exist');
     })
+
+    it('AT_01.03.03 | Verify that the user cannot use username and password not from the list', () => {
+        startPage
+            .typeUsernameToInputField(startData.newUserName)
+            .typePassordToInputField(startData.newPassword)
+            .clickLoginBtn()
+
+            .getErrorMessage().should('have.text', startData.loginNewUserErrorMessage)
+
+        startPage
+            .clickCrossOnErrorMessage()
+            .getErrorMessage().should('not.exist');
+    })    
   
 })
