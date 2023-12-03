@@ -18,5 +18,8 @@
   "passwordHeader": "Password for all users:",
   "lockesOutErrorMessage" : "Epic sadface: Sorry, this user has been locked out.",
   "loginWithoutPasswordErrorMessage" : "Epic sadface: Password is required",
-  "loginWithoutUsernameErrorMessage" : "Epic sadface: Username is required"
+  "loginWithoutUsernameErrorMessage" : "Epic sadface: Username is required",
+  "newUserName" : "tester",
+  "newPassword" : "testPassword",
+  "loginNewUserErrorMessage" : "Epic sadface: Username and password do not match any user in this service"
 }
