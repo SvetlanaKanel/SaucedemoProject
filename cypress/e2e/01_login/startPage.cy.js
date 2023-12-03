@@ -1,9 +1,9 @@
 /// <reference types = "Cypress"/>
 
-import StartPage from "../pageObgect/StartPage";
-import startData from "../fixtures/startData.json";
-import ProductPage from "../pageObgect/ProductPage";
-import productData from "../fixtures/productData.json";
+import StartPage from "../../pageObgect/StartPage";
+import startData from "../../fixtures/startData.json";
+import ProductPage from "../../pageObgect/ProductPage";
+import productData from "../../fixtures/productData.json";
 
 const startPage = new StartPage();
 const productPage = new ProductPage();

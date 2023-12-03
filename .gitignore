@@ -31,8 +31,8 @@ node_modules/
 
 cypress/videos
 cypress/screenshots
-cypress/e2e/1-getting-started
-cypress/e2e/2-advanced-examples
+cypress/e2e/_1-getting-started
+cypress/e2e/_2-advanced-examples
 
 reports
 cypress/downloads
