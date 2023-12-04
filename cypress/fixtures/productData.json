@@ -1,15 +1,7 @@
 {
     "mainHeader" : "Products",
     "problemUserPicture" : "/static/media/sl-404.168b1cce.jpg",
-    "url" : "https://www.saucedemo.com/inventory.html",
-    "logo" : "Swag Labs",
-    "burgerPicture_srcset" : "/static/media/menu3x.52cc17a3.svg",
-    "burgerMenuList" : [
-        "All Items",
-        "About",
-        "Logout",
-        "Reset App State"
-    ],
-    "cartCSSBackground" : "https://www.saucedemo.com/static/media/cart3x.3669d74a.svg"
+    "url" : "https://www.saucedemo.com/inventory.html"
+  
 
 }
