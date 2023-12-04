@@ -51,7 +51,7 @@ describe('Burger menu and sidebar', () => {
             .and('have.value', startData.textBtn);
     })
 
-    it('Close sidebar and verify that the user can see the burger menu ikon', () => {
+    it('AT_02.01.06 | Close sidebar and verify that the user can see the burger menu ikon', () => {
         productPage
             .clickBurgerMenu()
             .getSidebarMenu().should('be.visible')
