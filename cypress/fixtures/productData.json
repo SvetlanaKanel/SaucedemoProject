@@ -9,5 +9,7 @@
         "About",
         "Logout",
         "Reset App State"
-    ]
+    ],
+    "cartCSSBackground" : "https://www.saucedemo.com/static/media/cart3x.3669d74a.svg"
+
 }

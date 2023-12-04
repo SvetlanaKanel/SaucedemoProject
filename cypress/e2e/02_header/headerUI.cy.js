@@ -17,14 +17,20 @@ describe('Header UI', () => {
             .clickLoginBtn();
     })
 
-    it('AT_02.01.01 | Verify that page has logo "Swag Labs', () => {
-        productPage.getLogo().should('have.text', productData.logo);
+    it('AT_02.01.01 | Product page > Verify logo is "Swag Labs', () => {
+        productPage.getHeaderLogo().should('have.text', productData.logo);
     })
 
-    it('AT_02.01.02 | Verify humburger menu logo is visible and has required image', () => {
+    it('AT_02.01.02 | Product page > Verify burger menu logo is visible and has required image', () => {
         productPage
             .getBurgerMenuLogo().should('be.visible')
             .and('have.attr', "srcset", productData.burgerPicture_srcset);
+    })
+
+    it('AT_02.01.03 | Product page > Verify shopping cart is visible and has required image', () => {
+        productPage.getCartLink().should('be.visible')
+        .and('have.css', 'height', '40px')
+        .and('have.css', 'width', '40px')
     })
 
 });
