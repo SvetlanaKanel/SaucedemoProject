@@ -2,13 +2,13 @@
 
 import StartPage from "../../pageObgect/StartPage"
 import startData from "../../fixtures/startData.json";
-import ProductPage from "../../pageObgect/ProductPage";
-import productData from "../../fixtures/productData.json";
+import Header from "../../pageObgect/Header";
+import headerData from "../../fixtures/headerData.json";
 import SaucelabsPage from "../../pageObgect/SaucelabsPage";
 import saucelabsData from "../../fixtures/saucelabsData.json";
 
 const startPage = new StartPage();
-const productPage = new ProductPage();
+const header = new Header();
 const saucelabsPage = new SaucelabsPage();
 
 describe('Burger menu and sidebar', () => {
@@ -21,17 +21,17 @@ describe('Burger menu and sidebar', () => {
     })
 
     it('AT_02.01.03 | Click on humburger menu and verify all links are visible and have right name', () => {
-        productPage
+        header
             .clickBurgerMenu()
             .getSidebarList().each(($el, idx) => {
                 cy.wrap($el)
                     .should('be.visible')
-                    .and('have.text', productData.burgerMenuList[idx])
+                    .and('have.text', headerData.burgerMenuList[idx])
             })
     });
 
     it('AT_02.01.04 | burger menu > click on "About" sidebar link and verify it redirects on SaiceLabs site', () => {
-        productPage
+        header
             .clickBurgerMenu()
             .clickAboutSidebarLink();
 
@@ -40,7 +40,7 @@ describe('Burger menu and sidebar', () => {
     })
 
     it('AT_02.01.05 | burger menu > click on "Logout" sidebar link and verify it redirects on Start login page', () => {
-        productPage
+        header
             .clickBurgerMenu()
             .clickLogoutSidebarLink();
 
@@ -52,15 +52,15 @@ describe('Burger menu and sidebar', () => {
     })
 
     it('AT_02.01.06 | Close sidebar and verify that the user can see the burger menu ikon', () => {
-        productPage
+        header
             .clickBurgerMenu()
             .getSidebarMenu().should('be.visible')
             .and('have.attr', 'aria-hidden', 'false')
 
-        productPage.clickSidebarCrossBtn()
+        header.clickSidebarCrossBtn()
             .getSidebarMenu().should('not.be.visible')
             .and('have.attr', 'aria-hidden', 'true')
-        productPage.getBurgerMenu()
+        header.getBurgerMenu()
             .should('be.visible')
     })
 
