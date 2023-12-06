@@ -20,7 +20,7 @@ describe('Burger menu and sidebar', () => {
             .clickLoginBtn();
     })
 
-    it('AT_02.01.03 | Click on humburger menu and verify all links are visible and have right name', () => {
+    it('AT_02.01.01 | Click on humburger menu and verify all links are visible and have right name', () => {
         header
             .clickBurgerMenu()
             .getSidebarList().each(($el, idx) => {
@@ -30,7 +30,7 @@ describe('Burger menu and sidebar', () => {
             })
     });
 
-    it('AT_02.01.04 | burger menu > click on "About" sidebar link and verify it redirects on SaiceLabs site', () => {
+    it('AT_02.01.02 | burger menu > click on "About" sidebar link and verify it redirects on SaiceLabs site', () => {
         header
             .clickBurgerMenu()
             .clickAboutSidebarLink();
@@ -39,7 +39,7 @@ describe('Burger menu and sidebar', () => {
         saucelabsPage.getLogo().should('have.attr', 'alt', saucelabsData.logoAltText)
     })
 
-    it('AT_02.01.05 | burger menu > click on "Logout" sidebar link and verify it redirects on Start login page', () => {
+    it('AT_02.01.03 | burger menu > click on "Logout" sidebar link and verify it redirects on Start login page', () => {
         header
             .clickBurgerMenu()
             .clickLogoutSidebarLink();
@@ -51,7 +51,7 @@ describe('Burger menu and sidebar', () => {
             .and('have.value', startData.textBtn);
     })
 
-    it('AT_02.01.06 | Close sidebar and verify that the user can see the burger menu ikon', () => {
+    it('AT_02.01.04 | Close sidebar and verify that the user can see the burger menu ikon', () => {
         header
             .clickBurgerMenu()
             .getSidebarMenu().should('be.visible')
