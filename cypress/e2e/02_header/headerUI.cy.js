@@ -10,7 +10,7 @@ const startPage = new StartPage();
 const header = new Header();
 const cartPage = new CartPage();
 
-describe('Header UI', () => {
+describe('Header UI and functionality', () => {
     beforeEach(() => {
         cy.visit('https://www.saucedemo.com/');
         startPage
@@ -29,15 +29,25 @@ describe('Header UI', () => {
             .and('have.attr', "srcset", headerData.burgerPicture_srcset);
     })
 
-    it('AT_02.01.03 | Product page > Verify shopping cart is visible and has required image', () => {
-        header.getCartLink().should('be.visible')
-        .and('have.css', 'height', headerData.cartCSSHeight)
-        .and('have.css', 'width', headerData.cartCSSWidth);
+    it('AT_02.01.03 | Product page > Verify that burger menu is clickable', () => {
+        header
+            .getSidebarMenu().should('not.be.visible')
+            .and('have.attr', 'aria-hidden', 'true');
+        header
+            .clickBurgerMenu()
+            .getSidebarMenu().should('be.visible')
+            .and('have.attr', 'aria-hidden', 'false')
     })
 
-    it('AT_02.01.04 | Cart page >  Verify logo is "Swag Labs', () => {
+    it('AT_02.01.04 | Product page > Verify shopping cart is visible and has required image', () => {
+        header.getCartLink().should('be.visible')
+            .and('have.css', 'height', headerData.cartCSSHeight)
+            .and('have.css', 'width', headerData.cartCSSWidth);
+    })
+
+    it('AT_02.01.05 | Cart page >  Verify logo is "Swag Labs', () => {
         header.clickCartLink()
         header.getHeaderLogo().should('have.text', headerData.logo);
     })
-    
+
 });
